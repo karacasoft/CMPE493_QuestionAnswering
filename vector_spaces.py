@@ -151,6 +151,6 @@ def calculate_accuracy(k):
 
 
 print("Suggested answer paragraphs for question S55 when k=3: ")
-print(suggest_k_paragraphs_to_question(3))
+print(suggest_k_paragraphs_to_question("S55", 3))
 print("Suggested answer paragraphs for question S55 when k=5: ")
-print(suggest_k_paragraphs_to_question(5))
+print(suggest_k_paragraphs_to_question("S55", 5))
