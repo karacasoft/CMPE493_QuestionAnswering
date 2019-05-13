@@ -139,6 +139,16 @@ with open("cosine_scores.json", 'w+') as file:
 def suggest_k_paragraphs_to_question(question, k):
     return question2calculated[question][0:k]
 
+def suggest_k_paragraphs_to_question_text(question, k):
+    question_vector = generate_vector_space(question)
+    scores = []
+    for num in num2vectors:
+        scores.append((num, cosine_similarity(question_vector, num2vectors[num])))
+    scores.sort(key=itemgetter(1), reverse=True)
+    return scores[0:k]
+
+
+
 def calculate_accuracy(k):
     for question in question2calculated:
         if question == 'S2068':
@@ -149,8 +159,13 @@ def calculate_accuracy(k):
     print("Accuracy for "+k+": "+num_correct/len(question2label))
     return num_correct/len(question2label)
 
+# Several sample questions from the paragraphs
 
-print("Suggested answer paragraphs for question S55 when k=3: ")
-print(suggest_k_paragraphs_to_question("S55", 3))
-print("Suggested answer paragraphs for question S55 when k=5: ")
-print(suggest_k_paragraphs_to_question("S55", 5))
+#question = "Altın arama işlemi hangi kimyasal ile yapılmaktadır?"
+#question = "Toprak oluşumu nasıl başlar?"
+question = "En düşük sıcaklık nerde gözlemlenir?"
+print("Suggested answer paragraphs for question: "+question)
+print(suggest_k_paragraphs_to_question_text(question, 5))
+
+
+
