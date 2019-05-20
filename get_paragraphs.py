@@ -59,6 +59,5 @@ def suggest_k_paragraphs_to_question_text(question, k):
     scores.sort(key=itemgetter(1), reverse=True)
     return scores[0:k]
 
-question = "En düşük sıcaklık nerde gözlemlenir?"
-print("Suggested answer paragraphs for question: "+question)
-print(suggest_k_paragraphs_to_question_text(question, 5))
+def get_paragraph(num):
+    return num2paragraphs[num]

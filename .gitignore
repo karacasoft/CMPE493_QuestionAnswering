@@ -1,3 +1,6 @@
 *.pickle
+
 derlem.txt
 soru_gruplari.txt
+
+__pycache__/
