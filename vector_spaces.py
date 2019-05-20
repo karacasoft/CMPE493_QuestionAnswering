@@ -1,6 +1,7 @@
 import re
 import math
 from operator import itemgetter
+import pickle
 
 #-------------------------------------------------------
 
@@ -129,6 +130,15 @@ for question in question2vector:
         score = cosine_similarity(num2vectors[num], question2vector[question])
         question2calculated[question].append((num, score))
     question2calculated[question].sort(key=itemgetter(1), reverse=True)
+
+
+pickle.dump(num2paragraphs, open("num2paragraphs.pickle", 'wb'))
+pickle.dump(num2vectors, open("num2vectors.pickle", 'wb'))
+pickle.dump(idf, open("idf.pickle", 'wb'))
+pickle.dump(question2label, open("question2label.pickle", 'wb'))
+pickle.dump(question2vector, open("question2vector.pickle", 'wb'))
+pickle.dump(question2calculated, open("question2calculated.pickle", 'wb'))
+pickle.dump(full_text, open("full_text.pickle", 'wb'))
 
 """    
 with open("cosine_scores.json", 'w+') as file:
