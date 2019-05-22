@@ -2,5 +2,8 @@
 
 derlem.txt
 soru_gruplari.txt
+data_dmnp_formatted.json
+word2vec_tr.model
+vocab.csv
 
 __pycache__/
